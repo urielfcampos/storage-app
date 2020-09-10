@@ -12,10 +12,9 @@
         />
 
         <q-toolbar-title>
-          Quasar App
+          Controle de Estoque
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
@@ -32,8 +31,8 @@
         >
           Essential Links
         </q-item-label>
-        <EssentialLink
-          v-for="link in essentialLinks"
+        <AppLink
+          v-for="link in links"
           :key="link.title"
           v-bind="link"
         />
@@ -47,60 +46,30 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import AppLink from 'components/AppLink.vue'
 
-const linksData = [
+const links = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
+    title: 'Estoque',
+    caption: 'Verificar estoque',
     icon: 'school',
-    link: 'https://quasar.dev'
+    path: 'storage'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
+    title: 'Orçamentos',
+    caption: 'Criação de orçamentos',
     icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+    path: 'orders'
   }
 ]
 
 export default {
   name: 'MainLayout',
-  components: { EssentialLink },
+  components: { AppLink },
   data () {
     return {
       leftDrawerOpen: false,
-      essentialLinks: linksData
+      links: links
     }
   }
 }
