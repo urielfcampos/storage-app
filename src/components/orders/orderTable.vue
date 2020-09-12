@@ -1,6 +1,6 @@
 <template>
   <q-table
-    :title="`Produtos ${company}`"
+    :title="`Orçamento de ${senderCompany} para ${receiverCompany}`"
     :columns="tableColumns"
     :data="tableData"
     row-key="name"
@@ -61,8 +61,16 @@ function wrapCsvValue (val, formatFn) {
 }
 export default {
   props: {
-    company: {
+    senderCompany: {
       type: String,
+      required: true
+    },
+    receiverCompany: {
+      type: String,
+      required: true
+    },
+    products: {
+      type: Array,
       required: true
     }
   },
@@ -90,6 +98,9 @@ export default {
       ],
       tableData: [{ name: 'Leite', storageQuantity: '10', price: '20.0' }]
     }
+  },
+  mounted () {
+    this.tableData = Array.from(this.products)
   },
   methods: {
     exportTable () {

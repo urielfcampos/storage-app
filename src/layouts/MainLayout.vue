@@ -59,7 +59,7 @@ const links = [
     title: 'Orçamentos',
     caption: 'Criação de orçamentos',
     icon: 'code',
-    path: 'orders'
+    path: 'order'
   }
 ]
 
